@@ -1,4 +1,13 @@
-socket_chat
-===========
+## step
 
-node.js+socket.io聊天室
+```
+git clone https://github.com/superRaytin/socket_chat.git
+```
+
+```
+npm install
+```
+
+```
+node app
+```
