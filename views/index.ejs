@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+hello world
+<div id="J-send">
+    <input type="text">
+</div>
+<div id="J-content"></div>
+<script type="text/javascript" src="/javascripts/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var content = $('#J-content');
+        var message = $('#J-send input');
+        var socket = io.connect('http://localhost:3001');
+        //socket.on('open', function(){
+            socket.on('message', function(data){
+                console.log(data);
+                content.append('<p>【'+ data.author +'】' + data.time + ': ' + data.text +'</p>');
+            });
+
+            socket.on('system', function(data){
+                console.log(data);
+                content.append('<p>【'+ data.author +'】' + data.time + ': ' + data.type + ' ' + data.text +'</p>');
+            });
+
+            message.keyup(function(e){
+                if(e.keyCode == 13){
+                    console.log(222);
+                    //socket.emit('message', message.val());
+                    socket.send(message.val());
+                }
+                e.preventDefault();
+            });
+        //});
+    });
+</script>
+</body>
+</html>
