@@ -12,5 +12,5 @@ npm install
 node app
 ```
 
-## Dependencies (socket.io)
-Microsoft Visual Studio 2005+
+## Dependencies for windows (socket.io)
+- Microsoft Visual Studio, Preferably 2005 or later
